@@ -102,6 +102,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="roundLabel" destination="XgR-WF-Kmt" id="AVl-0X-PAP"/>
+                        <outlet property="scoreLabel" destination="EWo-n4-DHL" id="aVy-oJ-5ao"/>
+                        <outlet property="slider" destination="CyQ-Rv-2tY" id="aRs-Fn-m84"/>
+                        <outlet property="targetLabel" destination="rUH-ai-POK" id="78J-3W-kCa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
