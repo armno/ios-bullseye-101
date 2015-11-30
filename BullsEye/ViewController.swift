@@ -35,26 +35,52 @@ class ViewController: UIViewController {
     
     let difference = abs(currentValue - targetValue)
     let points = 100 - difference
+    var bonus = 0
+    let title: String
+
     
-    score += points
+    if points == 100 {
+      title = "Perfect!"
+      bonus = 100
+    } else if points > 90 {
+      title = "You almost had it!"
+    } else if points > 50 {
+      title = "Nice try!"
+    } else {
+      title = "Not even close!"
+    }
     
-    let message = "Your score is: \(points) points"
+    score = score + points + bonus
     
-    let alert = UIAlertController(title: "Hello wolrd", message: message, preferredStyle: .Alert)
+    let message = "Your score is: \(points + bonus) points"
     
-    let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
+    
+    let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+    
+    let action = UIAlertAction(title: "OK", style: .Default, handler: {
+      action in self.startNewRound()
+                self.updateLabels()
+    })
     
     alert.addAction(action)
     
     presentViewController(alert, animated: true, completion: nil)
     
-    startNewRound()
-    updateLabels()
-    
   }
   
   @IBAction func sliderMoved(slider: UISlider) {
     currentValue = lroundf(slider.value)
+  }
+  
+  @IBAction func startOverTouched() {
+    startNewGame()
+    updateLabels()
+  }
+  
+  func startNewGame() {
+    round = 0
+    score = 0
+    startNewRound()
   }
   
   func startNewRound() {

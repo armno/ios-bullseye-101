@@ -96,6 +96,9 @@
                                 <rect key="frame" x="50" y="247" width="71" height="30"/>
                                 <animations/>
                                 <state key="normal" title="Start Over"/>
+                                <connections>
+                                    <action selector="startOverTouched" destination="BYZ-38-t0r" eventType="touchUpInside" id="71F-YF-yTe"/>
+                                </connections>
                             </button>
                         </subviews>
                         <animations/>
