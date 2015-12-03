@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import QuartzCore
 
 class ViewController: UIViewController {
     
@@ -24,6 +25,24 @@ class ViewController: UIViewController {
     super.viewDidLoad()
     startNewRound()
     updateLabels()
+    
+    let thumbImageNormal = UIImage(named: "SliderThumb-Normal")
+    slider.setThumbImage(thumbImageNormal, forState: .Normal)
+    
+    let thumbImageHighlighted = UIImage(named: "SliderThumb-Highlighted")
+    slider.setThumbImage(thumbImageHighlighted, forState: .Highlighted)
+    
+    let insets = UIEdgeInsets(top: 0, left: 14, bottom: 0, right: 14)
+    
+    if let trackLeftImage = UIImage(named: "SliderTrackLeft") {
+      let trackLeftResizable = trackLeftImage.resizableImageWithCapInsets(insets)
+      slider.setMinimumTrackImage(trackLeftResizable, forState: .Normal)
+    }
+    
+    if let trackRightImage = UIImage(named: "SliderTrackRight") {
+      let trackRightResizable = trackRightImage.resizableImageWithCapInsets(insets)
+      slider.setMaximumTrackImage(trackRightResizable, forState: .Normal)
+    }
   }
 
   override func didReceiveMemoryWarning() {
@@ -75,6 +94,12 @@ class ViewController: UIViewController {
   @IBAction func startOverTouched() {
     startNewGame()
     updateLabels()
+    
+    let transition = CATransition()
+    transition.type = kCATransitionFade
+    transition.duration = 0.5
+    transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+    view.layer.addAnimation(transition, forKey: nil)
   }
   
   func startNewGame() {
